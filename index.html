@@ -9,15 +9,26 @@
 
 </head>
 <body>
-    <section class="booklistdisplay">
-        <h1> AWESOME BOOKS</h1>
+    <nav class="nav">
+        <ul class="lists">
+          <li class="awesome-books "><a href="#" >Awesome Books</a></li>
+          <li class="list border-r link" id="list-books" ><a href="#"class ="fun" id="list">List</a></li>
+          <li class="list border-r link" id="addbooklink"><a href="#" class ="fun"id="addbook">Add Book</a></li>
+          <li class="list link" id="contactlink"><a href="#"class ="fun"id="contact">Contact</a></li>
+        </ul>
+      </nav>
+    <div class="awesomeContainer">
+        <div class="date">Date</div>
+    <section class="booklistdisplay" id="list">
+        <h1> All awesome books</h1>
         <div class="container">
 
         </div>
     </section>
   
 
-    <section class="addbook">
+    <section class="addbookSection" id="addbook">
+        <h2>Add a new book</h2>
         <form  class="addingbook">
             <input
           type="text"
@@ -39,8 +50,24 @@
         </form>
     </section>
 
-
-
+    <section class="contactdetail" id="contact">
+        <h2 class="contact">Contact Information</h2>
+        <p class="contactparagraph">Do you have any questions or you just want to say "Hello"?<br>
+          You can reach out to us!
+        </p>
+        <div class="contactcontainer">
+          <ui class="containinfo">
+            <li>Our e-mail: mail@mail.com</li>
+            <li>Our Phone number: +2348120653217</li>
+            <li>Our Address: Microverse head-office</li>
+          </ui>
+        </div>
+      </div>
+      <footer class="footer">
+        <p class="copyright">Copyright<span>...</span></p>
+      </footer>
+    </section>
+</div>
 <script src="script.js"></script>
 </body>
 </html>
