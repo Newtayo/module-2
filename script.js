@@ -30,10 +30,13 @@ class Activity {
     const newBook = new Books();
     newBook.title = addingbook.elements.title.value;
     newBook.author = addingbook.elements.author.value;
-    newBook.id = `${new Date().getTime()}`;
+    // newBook.id = `${new Date().getTime()}`;
+    newBook.id = `${bookcollection.length + 1}`;
     bookcollection.push(newBook);
 
     updatingstorage();
+    addingbook.elements.title.value = '';
+    addingbook.elements.author.value = '';
 
     return this;
   }
@@ -50,8 +53,8 @@ const newAction = new Activity();
 function bookArrangement(data) {
   const bookdetails = document.createElement('div');
   bookdetails.className = 'bookdetails';
-  bookdetails.innerHTML = `<h1 class="booktitle">${data.title}</h1>
-    <h3 class="author">${data.author}</h3>
+  bookdetails.innerHTML = `<h1 class="booktitle">"${data.title}" </h1>
+    <h3 class="author"> by ${data.author}</h3>
     <button class="remove" type="submit" id="${data.id}" => Remove</button>
     
     <hr>`;
@@ -88,3 +91,52 @@ addbutton.addEventListener('click', (event) => {
   newAction.addbook();
   display();
 });
+
+const currentDate = document.querySelector('.date');
+const contactdetail = document.querySelector('.contactdetail');
+const addbooksection = document.querySelector('.addbookSection');
+
+const booklistdisplay = document.querySelector('.booklistdisplay');
+
+const dateTime = new Date();
+const day = dateTime.toLocaleDateString('en-US', {
+  dateStyle: 'long',
+});
+
+const time = dateTime.toLocaleTimeString('en-US', {
+  timeStyle: 'medium',
+});
+currentDate.innerHTML = `${day}  ${time}`;
+
+const links = document.querySelectorAll('.link');
+const fun = document.querySelectorAll('.fun');
+
+links.forEach((link) => link.addEventListener('click', (e) => {
+  if (e.target.id === 'list') {
+    fun.forEach((funs) => {
+      funs.classList.remove('blue');
+    });
+    e.target.classList.add('blue');
+    addbooksection.classList.add('hide');
+    contactdetail.classList.add('hide');
+    booklistdisplay.classList.remove('hide');
+  } else if (e.target.id === 'addbook') {
+    fun.forEach((funs) => {
+      funs.classList.remove('blue');
+    });
+
+    e.target.classList.add('blue');
+    addbooksection.classList.remove('hide');
+    contactdetail.classList.add('hide');
+    booklistdisplay.classList.add('hide');
+  } else if (e.target.id === 'contact') {
+    fun.forEach((funs) => {
+      funs.classList.remove('blue');
+    });
+
+    e.target.classList.add('blue');
+    addbooksection.classList.add('hide');
+    contactdetail.classList.remove('hide');
+    booklistdisplay.classList.add('hide');
+  }
+}));
