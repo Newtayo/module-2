@@ -93,10 +93,6 @@ addbutton.addEventListener('click', (event) => {
 });
 
 const currentDate = document.querySelector('.date');
-const contactdetail = document.querySelector('.contactdetail');
-const addbooksection = document.querySelector('.addbookSection');
-
-const booklistdisplay = document.querySelector('.booklistdisplay');
 
 const dateTime = new Date();
 const day = dateTime.toLocaleDateString('en-US', {
@@ -111,32 +107,19 @@ currentDate.innerHTML = `${day}  ${time}`;
 const links = document.querySelectorAll('.link');
 const fun = document.querySelectorAll('.fun');
 
+const section = document.querySelectorAll('section');
+
 links.forEach((link) => link.addEventListener('click', (e) => {
-  if (e.target.id === 'list') {
+  if (e.target.id) {
     fun.forEach((funs) => {
       funs.classList.remove('blue');
     });
     e.target.classList.add('blue');
-    addbooksection.classList.add('hide');
-    contactdetail.classList.add('hide');
-    booklistdisplay.classList.remove('hide');
-  } else if (e.target.id === 'addbook') {
-    fun.forEach((funs) => {
-      funs.classList.remove('blue');
+    section.forEach((sec) => {
+      sec.classList.add('hide');
+      if (sec.id === e.target.id) {
+        sec.classList.remove('hide');
+      }
     });
-
-    e.target.classList.add('blue');
-    addbooksection.classList.remove('hide');
-    contactdetail.classList.add('hide');
-    booklistdisplay.classList.add('hide');
-  } else if (e.target.id === 'contact') {
-    fun.forEach((funs) => {
-      funs.classList.remove('blue');
-    });
-
-    e.target.classList.add('blue');
-    addbooksection.classList.add('hide');
-    contactdetail.classList.remove('hide');
-    booklistdisplay.classList.add('hide');
   }
 }));
